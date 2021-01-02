@@ -14259,7 +14259,7 @@ a.anchor-link {
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#imports pour le MQTT</span>
@@ -14290,7 +14290,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
@@ -14315,410 +14315,9 @@ a.anchor-link {
 
 
 
-<div id="72f26c72-aad9-4ae2-af48-b118b6e3dbe5" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
+<div id="65b84a34-6ee8-46a1-94b2-986d7b87807c" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
 <script type="text/javascript">
-var element = document.getElementById('72f26c72-aad9-4ae2-af48-b118b6e3dbe5');
-
-(function(root) {
-  function now() {
-    return new Date();
-  }
-
-  var force = true;
-
-  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
-    root._bokeh_onload_callbacks = [];
-    root._bokeh_is_loading = undefined;
-  }
-
-  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
-    root._bokeh_timeout = Date.now() + 5000;
-    root._bokeh_failed_load = false;
-  }
-
-  function run_callbacks() {
-    try {
-      root._bokeh_onload_callbacks.forEach(function(callback) {
-        if (callback != null)
-          callback();
-      });
-    } finally {
-      delete root._bokeh_onload_callbacks
-    }
-    console.debug("Bokeh: all callbacks have finished");
-  }
-
-  function load_libs(css_urls, js_urls, callback) {
-    if (css_urls == null) css_urls = [];
-    if (js_urls == null) js_urls = [];
-
-    root._bokeh_onload_callbacks.push(callback);
-    if (root._bokeh_is_loading > 0) {
-      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
-      return null;
-    }
-    if (js_urls == null || js_urls.length === 0) {
-      run_callbacks();
-      return null;
-    }
-    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
-    root._bokeh_is_loading = css_urls.length + js_urls.length;
-
-    function on_load() {
-      root._bokeh_is_loading--;
-      if (root._bokeh_is_loading === 0) {
-        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
-        run_callbacks()
-      }
-    }
-
-    function on_error() {
-      console.error("failed to load " + url);
-    }
-
-    for (var i = 0; i < css_urls.length; i++) {
-      var url = css_urls[i];
-      const element = document.createElement("link");
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.rel = "stylesheet";
-      element.type = "text/css";
-      element.href = url;
-      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
-      document.body.appendChild(element);
-    }
-
-    var skip = [];
-    if (window.requirejs) {
-      require([], function() {
-      })
-    }
-    for (var i = 0; i < js_urls.length; i++) {
-      var url = js_urls[i];
-      if (skip.indexOf(url) >= 0) { on_load(); continue; }
-      var element = document.createElement('script');
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.async = false;
-      element.src = url;
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      document.head.appendChild(element);
-    }
-	if (!js_urls.length) {
-      on_load()
-    }
-  };
-
-  function inject_raw_css(css) {
-    const element = document.createElement("style");
-    element.appendChild(document.createTextNode(css));
-    document.body.appendChild(element);
-  }
-
-  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js", "https://unpkg.com/@holoviz/panel@^0.10.2/dist/panel.min.js"];
-  var css_urls = ["https://unpkg.com/@holoviz/panel@0.10.2/dist/css/dataframe.css", "https://unpkg.com/@holoviz/panel@0.10.2/dist/css/alerts.css", "https://unpkg.com/@holoviz/panel@0.10.2/dist/css/card.css", "https://unpkg.com/@holoviz/panel@0.10.2/dist/css/widgets.css", "https://unpkg.com/@holoviz/panel@0.10.2/dist/css/json.css", "https://unpkg.com/@holoviz/panel@0.10.2/dist/css/markdown.css"];
-
-  var inline_js = [
-    function(Bokeh) {
-      Bokeh.set_log_level("info");
-    },
-    function(Bokeh) {} // ensure no trailing comma for IE
-  ];
-
-  function run_inline_js() {
-    if ((root.Bokeh !== undefined) || (force === true)) {
-      for (var i = 0; i < inline_js.length; i++) {
-        inline_js[i].call(root, root.Bokeh);
-      }} else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(run_inline_js, 100);
-    } else if (!root._bokeh_failed_load) {
-      console.log("Bokeh: BokehJS failed to load within specified timeout.");
-      root._bokeh_failed_load = true;
-    }
-  }
-
-  if (root._bokeh_is_loading === 0) {
-    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
-    run_inline_js();
-  } else {
-    load_libs(css_urls, js_urls, function() {
-      console.debug("Bokeh: BokehJS plotting callback run at", now());
-      run_inline_js();
-    });
-  }
-}(window));
-</script>
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div id="72f26c72-aad9-4ae2-af48-b118b6e3dbe5" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
-<script type="text/javascript">
-var element = document.getElementById('72f26c72-aad9-4ae2-af48-b118b6e3dbe5');
-
-if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
-  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
-}
-
-
-    function JupyterCommManager() {
-    }
-
-    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
-      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
-        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
-        comm_manager.register_target(comm_id, function(comm) {
-          comm.on_msg(msg_handler);
-        });
-      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
-        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
-          comm.onMsg = msg_handler;
-        });
-      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
-        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
-          var messages = comm.messages[Symbol.asyncIterator]();
-          function processIteratorResult(result) {
-            var message = result.value;
-            console.log(message)
-            var content = {data: message.data, comm_id};
-            var buffers = []
-            for (var buffer of message.buffers || []) {
-              buffers.push(new DataView(buffer))
-            }
-            var metadata = message.metadata || {};
-            var msg = {content, buffers, metadata}
-            msg_handler(msg);
-            return messages.next().then(processIteratorResult);
-          }
-          return messages.next().then(processIteratorResult);
-        })
-      }
-    }
-
-    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
-      if (comm_id in window.PyViz.comms) {
-        return window.PyViz.comms[comm_id];
-      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
-        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
-        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
-        if (msg_handler) {
-          comm.on_msg(msg_handler);
-        }
-      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
-        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
-        comm.open();
-        if (msg_handler) {
-          comm.onMsg = msg_handler;
-        }
-      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
-        var comm_promise = google.colab.kernel.comms.open(comm_id)
-        comm_promise.then((comm) => {
-          window.PyViz.comms[comm_id] = comm;
-          if (msg_handler) {
-            var messages = comm.messages[Symbol.asyncIterator]();
-            function processIteratorResult(result) {
-              var message = result.value;
-              var content = {data: message.data};
-              var metadata = message.metadata || {comm_id};
-              var msg = {content, metadata}
-              msg_handler(msg);
-              return messages.next().then(processIteratorResult);
-            }
-            return messages.next().then(processIteratorResult);
-          }
-        }) 
-        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
-          return comm_promise.then((comm) => {
-            comm.send(data, metadata, buffers, disposeOnDone);
-          });
-        };
-        var comm = {
-          send: sendClosure
-        };
-      }
-      window.PyViz.comms[comm_id] = comm;
-      return comm;
-    }
-    window.PyViz.comm_manager = new JupyterCommManager();
-    
-
-
-var JS_MIME_TYPE = 'application/javascript';
-var HTML_MIME_TYPE = 'text/html';
-var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
-var CLASS_NAME = 'output';
-
-/**
- * Render data to the DOM node
- */
-function render(props, node) {
-  var div = document.createElement("div");
-  var script = document.createElement("script");
-  node.appendChild(div);
-  node.appendChild(script);
-}
-
-/**
- * Handle when a new output is added
- */
-function handle_add_output(event, handle) {
-  var output_area = handle.output_area;
-  var output = handle.output;
-  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
-    return
-  }
-  var id = output.metadata[EXEC_MIME_TYPE]["id"];
-  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
-  if (id !== undefined) {
-    var nchildren = toinsert.length;
-    var html_node = toinsert[nchildren-1].children[0];
-    html_node.innerHTML = output.data[HTML_MIME_TYPE];
-    var scripts = [];
-    var nodelist = html_node.querySelectorAll("script");
-    for (var i in nodelist) {
-      if (nodelist.hasOwnProperty(i)) {
-        scripts.push(nodelist[i])
-      }
-    }
-
-    scripts.forEach( function (oldScript) {
-      var newScript = document.createElement("script");
-      var attrs = [];
-      var nodemap = oldScript.attributes;
-      for (var j in nodemap) {
-        if (nodemap.hasOwnProperty(j)) {
-          attrs.push(nodemap[j])
-        }
-      }
-      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
-      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-      oldScript.parentNode.replaceChild(newScript, oldScript);
-    });
-    if (JS_MIME_TYPE in output.data) {
-      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
-    }
-    output_area._hv_plot_id = id;
-    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
-      window.PyViz.plot_index[id] = Bokeh.index[id];
-    } else {
-      window.PyViz.plot_index[id] = null;
-    }
-  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
-    var bk_div = document.createElement("div");
-    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
-    var script_attrs = bk_div.children[0].attributes;
-    for (var i = 0; i < script_attrs.length; i++) {
-      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
-    }
-    // store reference to server id on output_area
-    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
-  }
-}
-
-/**
- * Handle when an output is cleared or removed
- */
-function handle_clear_output(event, handle) {
-  var id = handle.cell.output_area._hv_plot_id;
-  var server_id = handle.cell.output_area._bokeh_server_id;
-  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
-  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
-  if (server_id !== null) {
-    comm.send({event_type: 'server_delete', 'id': server_id});
-    return;
-  } else if (comm !== null) {
-    comm.send({event_type: 'delete', 'id': id});
-  }
-  delete PyViz.plot_index[id];
-  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
-    var doc = window.Bokeh.index[id].model.document
-    doc.clear();
-    const i = window.Bokeh.documents.indexOf(doc);
-    if (i > -1) {
-      window.Bokeh.documents.splice(i, 1);
-    }
-  }
-}
-
-/**
- * Handle kernel restart event
- */
-function handle_kernel_cleanup(event, handle) {
-  delete PyViz.comms["hv-extension-comm"];
-  window.PyViz.plot_index = {}
-}
-
-/**
- * Handle update_display_data messages
- */
-function handle_update_output(event, handle) {
-  handle_clear_output(event, {cell: {output_area: handle.output_area}})
-  handle_add_output(event, handle)
-}
-
-function register_renderer(events, OutputArea) {
-  function append_mime(data, metadata, element) {
-    // create a DOM node to render to
-    var toinsert = this.create_output_subarea(
-    metadata,
-    CLASS_NAME,
-    EXEC_MIME_TYPE
-    );
-    this.keyboard_manager.register_events(toinsert);
-    // Render to node
-    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
-    render(props, toinsert[0]);
-    element.append(toinsert);
-    return toinsert
-  }
-
-  events.on('output_added.OutputArea', handle_add_output);
-  events.on('output_updated.OutputArea', handle_update_output);
-  events.on('clear_output.CodeCell', handle_clear_output);
-  events.on('delete.Cell', handle_clear_output);
-  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
-
-  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
-    safe: true,
-    index: 0
-  });
-}
-
-if (window.Jupyter !== undefined) {
-  try {
-    var events = require('base/js/events');
-    var OutputArea = require('notebook/js/outputarea').OutputArea;
-    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
-      register_renderer(events, OutputArea);
-    }
-  } catch(err) {
-  }
-}
-
-</script>
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div id="72f26c72-aad9-4ae2-af48-b118b6e3dbe5" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
-<script type="text/javascript">
-var element = document.getElementById('72f26c72-aad9-4ae2-af48-b118b6e3dbe5');
+var element = document.getElementById('65b84a34-6ee8-46a1-94b2-986d7b87807c');
 
 (function(root) {
   function now() {
@@ -15868,9 +15467,9 @@ var element = document.getElementById('72f26c72-aad9-4ae2-af48-b118b6e3dbe5');
 
 
 
-<div id="72f26c72-aad9-4ae2-af48-b118b6e3dbe5" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
+<div id="65b84a34-6ee8-46a1-94b2-986d7b87807c" class="jp-RenderedJavaScript jp-OutputArea-output " data-mime-type="application/javascript">
 <script type="text/javascript">
-var element = document.getElementById('72f26c72-aad9-4ae2-af48-b118b6e3dbe5');
+var element = document.getElementById('65b84a34-6ee8-46a1-94b2-986d7b87807c');
 
 if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
   window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
@@ -16224,7 +15823,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">MQTT_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;MQTT_USER&#39;</span><span class="p">)</span>
@@ -16246,7 +15845,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">topics</span> <span class="o">=</span> <span class="p">{</span>
@@ -16268,7 +15867,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">topic</span> <span class="o">=</span> <span class="s2">&quot;zigbee2mqtt/TH_bureau&quot;</span>
@@ -16288,13 +15887,13 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>A noter que l'option <code>retained=True</code> aurait été sans effet si vous ne l'aviez pas activée dans la configuration du <em>broker</em>.</p>
-<p>Les données du capteur se trouve dans <em>payload</em>.</p>
+<p>Les données du capteur se trouvent dans <em>payload</em>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
@@ -16317,7 +15916,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>b&#39;{&#34;battery&#34;:91,&#34;humidity&#34;:50.44,&#34;linkquality&#34;:89,&#34;pressure&#34;:994.9,&#34;temperature&#34;:20.21,&#34;voltage&#34;:2985}&#39;
+<pre>b&#39;{&#34;battery&#34;:91,&#34;humidity&#34;:46.65,&#34;linkquality&#34;:81,&#34;pressure&#34;:994.5,&#34;temperature&#34;:20.27,&#34;voltage&#34;:2985}&#39;
 </pre>
 </div>
 </div>
@@ -16329,7 +15928,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
@@ -16348,7 +15947,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 
 
 
@@ -16366,13 +15965,13 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>On va maintenant utiliser le module <em>stream</em> du package <em>holoviews</em>. Un stream est tout simplement une table dans laquelle on va pouvoir rajouter un élément à chaque fois qu'un nouveau message provient du capteur.</p>
+<p>On va maintenant utiliser le module <em>stream</em> du package <em>holoviews</em>. Un stream est tout simplement un tuple nommé dans laquelle on va pouvoir injecter un élément à chaque fois qu'un nouveau message provient du capteur.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">room</span> <span class="o">=</span> <span class="s2">&quot;bureau&quot;</span>
@@ -16388,7 +15987,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">Bureau_Stream</span><span class="p">)</span>
@@ -16407,7 +16006,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 
 
 
@@ -16425,13 +16024,13 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Nous n'avons créé qu'une metaclasse. En effet plusieurs streams avec les mêmes paramètres mais différentes sources peut avoir être créé. Il faut créé notre nouvel objet ainsi:</p>
+<p>Nous n'avons créé qu'une metaclasse. En effet plusieurs streams avec les mêmes paramètres mais différentes sources peuvent être créé. Il faut instancier notre nouvel objet ainsi:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bureau_stream</span> <span class="o">=</span> <span class="n">Bureau_Stream</span><span class="p">()</span>
@@ -16445,7 +16044,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">bureau_stream</span><span class="p">)</span>
@@ -16464,7 +16063,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
 
 
 
@@ -16489,10 +16088,10 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myclient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s2">&quot;my_beautiful_client&quot;</span><span class="p">,)</span><span class="c1">#on donne le nom de la machine</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myclient</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">client_id</span><span class="o">=</span><span class="s2">&quot;my_beautiful_clientfr&quot;</span><span class="p">,)</span><span class="c1">#on donne le nom de la machine</span>
 <span class="n">myclient</span><span class="o">.</span><span class="n">username_pw_set</span><span class="p">(</span><span class="n">MQTT_USER</span><span class="p">,</span><span class="n">password</span><span class="o">=</span><span class="n">MQTT_PASSWORD</span><span class="p">)</span><span class="c1">#authentification</span>
 <span class="n">myclient</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">MQTT_ADDRESS</span><span class="p">)</span><span class="c1"># et on se connecte</span>
 </pre></div>
@@ -16510,7 +16109,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
 
 
 
@@ -16538,7 +16137,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">topics</span><span class="p">[</span><span class="s2">&quot;zigbee2mqtt/TH_bureau&quot;</span><span class="p">]</span>
@@ -16557,7 +16156,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 
 
 
@@ -16575,7 +16174,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
@@ -16592,7 +16191,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">myclient</span><span class="o">.</span><span class="n">loop_start</span><span class="p">()</span><span class="c1">#mettre dans un autre thread le fait d&#39;attendre puis récupérer un nouveau message</span>
@@ -16630,7 +16229,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bureau_stream</span>
@@ -16649,13 +16248,13 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>bureau(battery=91,humidity=50.44,linkquality=89,pressure=994.9,temperature=20.21,voltage=2985)</pre>
+<pre>bureau(battery=91,humidity=46.65,linkquality=81,pressure=994.5,temperature=20.27,voltage=2985)</pre>
 </div>
 
 </div>
@@ -16673,7 +16272,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[43]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bureau_stream</span>
@@ -16692,13 +16291,13 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 
 
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>bureau(battery=91,humidity=47.98,linkquality=86,pressure=994.8,temperature=20.23,voltage=2985)</pre>
+<pre>bureau(battery=91,humidity=46.57,linkquality=78,pressure=994.5,temperature=20.24,voltage=2985)</pre>
 </div>
 
 </div>
@@ -16710,7 +16309,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>On peut maintenant visualiser ce <em>stream</em>, on va donc créer une fonction qui retournera un objet <em>holoviews</em>. Panel étant ce qu'il est, il pourra accepter cette fonction en entrée dans un <em>Pane</em> et nous aurons notre dashboard dynamique.</p>
+<p>On peut maintenant visualiser ce <em>stream</em>, on va donc créer une fonction qui retournera un objet <em>holoviews</em>. Panel étant ce qu'il est, il pourra accepter cette fonction en entrée dans un <em>Pane</em> et nous aurons notre dashboard dynamique!</p>
 <p>Pour que le graph se mette à jour, il faut lui indiquer de se mettre à jour à chaque fois que la valeur change. On va utiliser le décorateur <em>depends</em> de la bibliothèque <em>param</em>, utilisé par <em>Holoviews</em> comme <em>Panel</em>.
 Vous noterez que les paramètres du décorateur sont exactement les mêmes que les paramètres en entrée de la fonction qui retourne le graph.</p>
 
@@ -16718,7 +16317,7 @@ Vous noterez que les paramètres du décorateur sont exactement les mêmes que l
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">COUNTER</span> <span class="o">=</span> <span class="mi">0</span>
@@ -16807,10 +16406,10 @@ Vous noterez que les paramètres du décorateur sont exactement les mêmes que l
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">panel</span><span class="p">(</span><span class="n">room_plots</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pn</span><span class="o">.</span><span class="n">panel</span><span class="p">(</span><span class="n">room_plots</span><span class="p">,</span><span class="n">embed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -16826,23 +16425,23 @@ Vous noterez que les paramètres du décorateur sont exactement les mêmes que l
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div id='1004'>
+<div id='2474'>
 
 
 
 
 
-  <div class="bk-root" id="0b141c0a-11c4-4942-a430-8a9907c1c8c7" data-root-id="1004"></div>
+  <div class="bk-root" id="b441aecc-0821-4c61-8478-e365b66a502e" data-root-id="2474"></div>
 </div>
 <script type="application/javascript">(function(root) {
   function embed_document(root) {
-    var docs_json = {"5353788d-dbc8-4bd6-843b-bbb2e4a65e07":{"roots":{"references":[{"attributes":{},"id":"1164","type":"LinearScale"},{"attributes":{"source":{"id":"1051"}},"id":"1057","type":"CDSView"},{"attributes":{},"id":"1360","type":"UnionRenderers"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01915","sizing_mode":"stretch_width"},"id":"1451","type":"Spacer"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"1176","type":"Toolbar"},{"attributes":{"axis":{"id":"1318"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1321","type":"Grid"},{"attributes":{"source":{"id":"1197"}},"id":"1203","type":"CDSView"},{"attributes":{},"id":"1315","type":"BasicTicker"},{"attributes":{"client_comm_id":"f2336eb514584a39992342436cc6ee84","comm_id":"f481dace674b439eadc23507d2275ca8","plot_id":"1004"},"id":"1553","type":"panel.models.comm_manager.CommManager"},{"attributes":{},"id":"1180","type":"BasicTickFormatter"},{"attributes":{},"id":"1182","type":"Selection"},{"attributes":{"axis":{"id":"1314"},"grid_line_color":null,"ticker":null},"id":"1317","type":"Grid"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1160","type":"Title"},{"attributes":{"align":"end","bar_color":"warning","height":20,"margin":[5,10,5,10],"max":255,"sizing_mode":"fixed","value":89,"width":50},"id":"1452","type":"panel.models.widgets.Progress"},{"attributes":{},"id":"1319","type":"BasicTicker"},{"attributes":{"axis_label":"y","bounds":"auto","formatter":{"id":"1326"},"major_label_orientation":"horizontal","ticker":{"id":"1319"},"visible":false},"id":"1318","type":"LinearAxis"},{"attributes":{"source":{"id":"1043"}},"id":"1050","type":"CDSView"},{"attributes":{"end":1.1,"reset_end":1.1,"reset_start":-1.1,"start":-1.1,"tags":[[["x","x",null]]]},"id":"1303","type":"Range1d"},{"attributes":{},"id":"1210","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"1030","type":"Toolbar"},{"attributes":{"axis":{"id":"1172"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1175","type":"Grid"},{"attributes":{"data_source":{"id":"1335"},"glyph":{"id":"1338"},"hover_glyph":null,"muted_glyph":{"id":"1340"},"nonselection_glyph":{"id":"1339"},"selection_glyph":null,"view":{"id":"1342"}},"id":"1341","type":"GlyphRenderer"},{"attributes":{"data":{"x":[0],"y0":{"__ndarray__":"AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[1]},"y1":{"__ndarray__":"MzMzMzMXj0A=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"1328"},"selection_policy":{"id":"1356"}},"id":"1327","type":"ColumnDataSource"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"1322","type":"Toolbar"},{"attributes":{"line_color":{"field":"y","transform":{"id":"1001"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1038","type":"Segment"},{"attributes":{},"id":"1214","type":"UnionRenderers"},{"attributes":{"reload":false},"id":"1653","type":"panel.models.location.Location"},{"attributes":{"data_source":{"id":"1327"},"glyph":{"id":"1330"},"hover_glyph":null,"muted_glyph":{"id":"1332"},"nonselection_glyph":{"id":"1331"},"selection_glyph":null,"view":{"id":"1334"}},"id":"1333","type":"GlyphRenderer"},{"attributes":{},"id":"1052","type":"Selection"},{"attributes":{"end":40,"reset_end":40,"reset_start":-20,"start":-20,"tags":[[["y","y",null]]]},"id":"1012","type":"Range1d"},{"attributes":{},"id":"1064","type":"UnionRenderers"},{"attributes":{"below":[{"id":"1168"}],"center":[{"id":"1171"},{"id":"1175"}],"left":[{"id":"1172"}],"margin":[5,5,5,5],"min_border_bottom":0,"min_border_left":0,"min_border_right":0,"min_border_top":0,"min_width":80,"plot_height":150,"plot_width":null,"renderers":[{"id":"1187"},{"id":"1195"},{"id":"1202"}],"sizing_mode":"stretch_width","title":{"id":"1160"},"toolbar":{"id":"1176"},"toolbar_location":null,"x_range":{"id":"1157"},"x_scale":{"id":"1164"},"y_range":{"id":"1158"},"y_scale":{"id":"1166"}},"id":"1159","subtype":"Figure","type":"Plot"},{"attributes":{"end":1.1,"reset_end":1.1,"reset_start":-1.1,"start":-1.1,"tags":[[["x","x",null]]]},"id":"1011","type":"Range1d"},{"attributes":{},"id":"1212","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"1181"},"glyph":{"id":"1184"},"hover_glyph":null,"muted_glyph":{"id":"1186"},"nonselection_glyph":{"id":"1185"},"selection_glyph":null,"view":{"id":"1188"}},"id":"1187","type":"GlyphRenderer"},{"attributes":{"data":{"text":["20.21\u00b0C"],"x":[0],"y":[20.21]},"selected":{"id":"1052"},"selection_policy":{"id":"1068"}},"id":"1051","type":"ColumnDataSource"},{"attributes":{},"id":"1173","type":"BasicTicker"},{"attributes":{},"id":"1326","type":"BasicTickFormatter"},{"attributes":{"data_source":{"id":"1051"},"glyph":{"id":"1054"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1055"},"selection_glyph":null,"view":{"id":"1057"}},"id":"1056","type":"GlyphRenderer"},{"attributes":{"axis_label":"y","bounds":"auto","formatter":{"id":"1180"},"major_label_orientation":"horizontal","ticker":{"id":"1173"},"visible":false},"id":"1172","type":"LinearAxis"},{"attributes":{"data":{"x":[0],"y0":{"__ndarray__":"AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[1]},"y1":{"__ndarray__":"9ihcj8I1NEA=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"1036"},"selection_policy":{"id":"1064"}},"id":"1035","type":"ColumnDataSource"},{"attributes":{"source":{"id":"1181"}},"id":"1188","type":"CDSView"},{"attributes":{"text_align":"center","text_alpha":{"value":0.1},"text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1201","type":"Text"},{"attributes":{},"id":"1336","type":"Selection"},{"attributes":{"source":{"id":"1035"}},"id":"1042","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"y","transform":{"id":"1003"}},"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"1003"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1340","type":"Scatter"},{"attributes":{"data_source":{"id":"1343"},"glyph":{"id":"1346"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1347"},"selection_glyph":null,"view":{"id":"1349"}},"id":"1348","type":"GlyphRenderer"},{"attributes":{},"id":"1066","type":"UnionRenderers"},{"attributes":{"axis":{"id":"1168"},"grid_line_color":null,"ticker":null},"id":"1171","type":"Grid"},{"attributes":{},"id":"1027","type":"BasicTicker"},{"attributes":{"source":{"id":"1335"}},"id":"1342","type":"CDSView"},{"attributes":{"high":1100,"low":900,"palette":["#2b83ba","#abdda4","#ffffbf","#fdae61","#d7191c"]},"id":"1003","type":"LinearColorMapper"},{"attributes":{},"id":"1166","type":"LinearScale"},{"attributes":{"data":{"x":[0],"y":{"__ndarray__":"9ihcj8I1NEA=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"1044"},"selection_policy":{"id":"1066"}},"id":"1043","type":"ColumnDataSource"},{"attributes":{},"id":"1034","type":"BasicTickFormatter"},{"attributes":{},"id":"1310","type":"LinearScale"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"1003"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1332","type":"Segment"},{"attributes":{"data_source":{"id":"1035"},"glyph":{"id":"1038"},"hover_glyph":null,"muted_glyph":{"id":"1040"},"nonselection_glyph":{"id":"1039"},"selection_glyph":null,"view":{"id":"1042"}},"id":"1041","type":"GlyphRenderer"},{"attributes":{"source":{"id":"1327"}},"id":"1334","type":"CDSView"},{"attributes":{"axis_label":"x","bounds":"auto","formatter":{"id":"1178"},"major_label_orientation":"horizontal","ticker":{"id":"1169"},"visible":false},"id":"1168","type":"LinearAxis"},{"attributes":{"data":{"x":[0],"y":{"__ndarray__":"MzMzMzMXj0A=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"1336"},"selection_policy":{"id":"1358"}},"id":"1335","type":"ColumnDataSource"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"y","transform":{"id":"1001"}},"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"1001"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1047","type":"Scatter"},{"attributes":{},"id":"1190","type":"Selection"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"y","transform":{"id":"1003"}},"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"1003"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1339","type":"Scatter"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown01917","text":"&lt;p&gt;Lu 1 fois&lt;/p&gt;"},"id":"1453","type":"panel.models.markup.HTML"},{"attributes":{"fill_color":{"field":"y","transform":{"id":"1003"}},"line_color":{"field":"y","transform":{"id":"1003"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1338","type":"Scatter"},{"attributes":{"fill_color":{"field":"y","transform":{"id":"1002"}},"line_color":{"field":"y","transform":{"id":"1002"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1192","type":"Scatter"},{"attributes":{},"id":"1356","type":"UnionRenderers"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"1003"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1331","type":"Segment"},{"attributes":{"axis_label":"x","bounds":"auto","formatter":{"id":"1324"},"major_label_orientation":"horizontal","ticker":{"id":"1315"},"visible":false},"id":"1314","type":"LinearAxis"},{"attributes":{"data":{"x":[0],"y0":{"__ndarray__":"AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[1]},"y1":{"__ndarray__":"uB6F61E4SUA=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"1182"},"selection_policy":{"id":"1210"}},"id":"1181","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1006"},{"id":"1010"},{"id":"1449"},{"id":"1453"}],"margin":[0,0,0,0],"name":"Column01919"},"id":"1005","type":"Column"},{"attributes":{},"id":"1018","type":"LinearScale"},{"attributes":{},"id":"1312","type":"LinearScale"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"1002"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1186","type":"Segment"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01897","sizing_mode":"stretch_width"},"id":"1009","type":"Spacer"},{"attributes":{"line_color":{"field":"y","transform":{"id":"1003"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1330","type":"Segment"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown01895","text":"&lt;h2&gt;room&lt;/h2&gt;"},"id":"1008","type":"panel.models.markup.HTML"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"1002"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1185","type":"Segment"},{"attributes":{"data_source":{"id":"1197"},"glyph":{"id":"1200"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1201"},"selection_glyph":null,"view":{"id":"1203"}},"id":"1202","type":"GlyphRenderer"},{"attributes":{"bar_color":"info","height":20,"margin":[5,10,5,10],"sizing_mode":"fixed","value":91,"width":50},"id":"1450","type":"panel.models.widgets.Progress"},{"attributes":{},"id":"1169","type":"BasicTicker"},{"attributes":{},"id":"1344","type":"Selection"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1306","type":"Title"},{"attributes":{"text_align":"center","text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1346","type":"Text"},{"attributes":{},"id":"1324","type":"BasicTickFormatter"},{"attributes":{"data":{"text":["994.9\nhPa"],"x":[0],"y":[994.9]},"selected":{"id":"1344"},"selection_policy":{"id":"1360"}},"id":"1343","type":"ColumnDataSource"},{"attributes":{"children":[{"id":"1007"},{"id":"1008"},{"id":"1009"}],"margin":[0,0,0,0],"name":"Row01898"},"id":"1006","type":"Row"},{"attributes":{"axis":{"id":"1022"},"grid_line_color":null,"ticker":null},"id":"1025","type":"Grid"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer01894","sizing_mode":"stretch_width"},"id":"1007","type":"Spacer"},{"attributes":{"source":{"id":"1343"}},"id":"1349","type":"CDSView"},{"attributes":{},"id":"1328","type":"Selection"},{"attributes":{"children":[{"id":"1013"},{"id":"1159"},{"id":"1305"}],"margin":[0,0,0,0],"name":"Row01914"},"id":"1010","type":"Row"},{"attributes":{"below":[{"id":"1314"}],"center":[{"id":"1317"},{"id":"1321"}],"left":[{"id":"1318"}],"margin":[5,5,5,5],"min_border_bottom":0,"min_border_left":0,"min_border_right":0,"min_border_top":0,"min_width":80,"plot_height":150,"plot_width":null,"renderers":[{"id":"1333"},{"id":"1341"},{"id":"1348"}],"sizing_mode":"stretch_width","title":{"id":"1306"},"toolbar":{"id":"1322"},"toolbar_location":null,"x_range":{"id":"1303"},"x_scale":{"id":"1310"},"y_range":{"id":"1304"},"y_scale":{"id":"1312"}},"id":"1305","subtype":"Figure","type":"Plot"},{"attributes":{"text_align":"center","text_alpha":{"value":0.1},"text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1347","type":"Text"},{"attributes":{"axis_label":"y","bounds":"auto","formatter":{"id":"1034"},"major_label_orientation":"horizontal","ticker":{"id":"1027"},"visible":false},"id":"1026","type":"LinearAxis"},{"attributes":{},"id":"1358","type":"UnionRenderers"},{"attributes":{"end":1200,"reset_end":1200,"reset_start":800,"start":800,"tags":[[["y","y",null]]]},"id":"1304","type":"Range1d"},{"attributes":{"line_color":{"field":"y","transform":{"id":"1002"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1184","type":"Segment"},{"attributes":{"data":{"x":[0],"y":{"__ndarray__":"uB6F61E4SUA=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"1190"},"selection_policy":{"id":"1212"}},"id":"1189","type":"ColumnDataSource"},{"attributes":{"end":100,"reset_end":100,"reset_start":0,"tags":[[["y","y",null]]]},"id":"1158","type":"Range1d"},{"attributes":{"text_align":"center","text_alpha":{"value":0.1},"text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1055","type":"Text"},{"attributes":{},"id":"1036","type":"Selection"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"y","transform":{"id":"1002"}},"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"1002"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1194","type":"Scatter"},{"attributes":{"axis_label":"x","bounds":"auto","formatter":{"id":"1032"},"major_label_orientation":"horizontal","ticker":{"id":"1023"},"visible":false},"id":"1022","type":"LinearAxis"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"1001"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1039","type":"Segment"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"1014","type":"Title"},{"attributes":{"data_source":{"id":"1043"},"glyph":{"id":"1046"},"hover_glyph":null,"muted_glyph":{"id":"1048"},"nonselection_glyph":{"id":"1047"},"selection_glyph":null,"view":{"id":"1050"}},"id":"1049","type":"GlyphRenderer"},{"attributes":{},"id":"1020","type":"LinearScale"},{"attributes":{"text_align":"center","text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1054","type":"Text"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"1001"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"1040","type":"Segment"},{"attributes":{"high":100,"low":20,"palette":["#ffffcc","#a1dab4","#41b6c4","#2c7fb8","#253494"]},"id":"1002","type":"LinearColorMapper"},{"attributes":{},"id":"1023","type":"BasicTicker"},{"attributes":{"high":40,"low":0,"palette":["#0C0786","#7C02A7","#CA4678","#F79341","#EFF821"]},"id":"1001","type":"LinearColorMapper"},{"attributes":{"below":[{"id":"1022"}],"center":[{"id":"1025"},{"id":"1029"}],"left":[{"id":"1026"}],"margin":[5,5,5,5],"min_border_bottom":0,"min_border_left":0,"min_border_right":0,"min_border_top":0,"min_width":80,"plot_height":150,"plot_width":null,"renderers":[{"id":"1041"},{"id":"1049"},{"id":"1056"}],"sizing_mode":"stretch_width","title":{"id":"1014"},"toolbar":{"id":"1030"},"toolbar_location":null,"x_range":{"id":"1011"},"x_scale":{"id":"1018"},"y_range":{"id":"1012"},"y_scale":{"id":"1020"}},"id":"1013","subtype":"Figure","type":"Plot"},{"attributes":{"children":[{"id":"1450"},{"id":"1451"},{"id":"1452"}],"margin":[0,0,0,0],"name":"Row01916"},"id":"1449","type":"Row"},{"attributes":{},"id":"1032","type":"BasicTickFormatter"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"y","transform":{"id":"1002"}},"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"1002"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1193","type":"Scatter"},{"attributes":{},"id":"1178","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"1189"}},"id":"1196","type":"CDSView"},{"attributes":{"axis":{"id":"1026"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1029","type":"Grid"},{"attributes":{"data":{"text":["50.44%"],"x":[0],"y":[50.44]},"selected":{"id":"1198"},"selection_policy":{"id":"1214"}},"id":"1197","type":"ColumnDataSource"},{"attributes":{},"id":"1044","type":"Selection"},{"attributes":{"fill_color":{"field":"y","transform":{"id":"1001"}},"line_color":{"field":"y","transform":{"id":"1001"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1046","type":"Scatter"},{"attributes":{},"id":"1198","type":"Selection"},{"attributes":{"children":[{"id":"1005"}],"margin":[0,0,0,0],"name":"Row01465"},"id":"1004","type":"Row"},{"attributes":{},"id":"1068","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"1189"},"glyph":{"id":"1192"},"hover_glyph":null,"muted_glyph":{"id":"1194"},"nonselection_glyph":{"id":"1193"},"selection_glyph":null,"view":{"id":"1196"}},"id":"1195","type":"GlyphRenderer"},{"attributes":{"end":1.1,"reset_end":1.1,"reset_start":-1.1,"start":-1.1,"tags":[[["x","x",null]]]},"id":"1157","type":"Range1d"},{"attributes":{"text_align":"center","text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"1200","type":"Text"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"y","transform":{"id":"1001"}},"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"1001"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"1048","type":"Scatter"}],"root_ids":["1004","1553","1653"]},"title":"Bokeh Application","version":"2.2.3"}};
-    var render_items = [{"docid":"5353788d-dbc8-4bd6-843b-bbb2e4a65e07","root_ids":["1004"],"roots":{"1004":"0b141c0a-11c4-4942-a430-8a9907c1c8c7"}}];
+    var docs_json = {"93d79a6e-4dcc-42bc-8be1-46a0e81ad1b1":{"roots":{"references":[{"attributes":{},"id":"2490","type":"LinearScale"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"2472"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2655","type":"Segment"},{"attributes":{"bar_color":"info","height":20,"margin":[5,10,5,10],"sizing_mode":"fixed","value":91,"width":50},"id":"2920","type":"panel.models.widgets.Progress"},{"attributes":{"line_color":{"field":"y","transform":{"id":"2472"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2654","type":"Segment"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"y","transform":{"id":"2472"}},"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"2472"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2664","type":"Scatter"},{"attributes":{"line_color":{"field":"y","transform":{"id":"2471"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2508","type":"Segment"},{"attributes":{"fill_color":{"field":"y","transform":{"id":"2472"}},"line_color":{"field":"y","transform":{"id":"2472"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2662","type":"Scatter"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"2472"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2656","type":"Segment"},{"attributes":{"high":100,"low":20,"palette":["#ffffcc","#a1dab4","#41b6c4","#2c7fb8","#253494"]},"id":"2472","type":"LinearColorMapper"},{"attributes":{},"id":"2503","type":"BasicTickFormatter"},{"attributes":{"children":[{"id":"2483"},{"id":"2629"},{"id":"2775"}],"margin":[0,0,0,0],"name":"Row06028"},"id":"2480","type":"Row"},{"attributes":{"source":{"id":"2651"}},"id":"2658","type":"CDSView"},{"attributes":{"data_source":{"id":"2651"},"glyph":{"id":"2654"},"hover_glyph":null,"muted_glyph":{"id":"2656"},"nonselection_glyph":{"id":"2655"},"selection_glyph":null,"view":{"id":"2658"}},"id":"2657","type":"GlyphRenderer"},{"attributes":{},"id":"2501","type":"BasicTickFormatter"},{"attributes":{},"id":"2660","type":"Selection"},{"attributes":{},"id":"2506","type":"Selection"},{"attributes":{"axis_label":"x","bounds":"auto","formatter":{"id":"2501"},"major_label_orientation":"horizontal","ticker":{"id":"2493"},"visible":false},"id":"2492","type":"LinearAxis"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"y","transform":{"id":"2472"}},"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"2472"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2663","type":"Scatter"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"2484","type":"Title"},{"attributes":{"data_source":{"id":"2659"},"glyph":{"id":"2662"},"hover_glyph":null,"muted_glyph":{"id":"2664"},"nonselection_glyph":{"id":"2663"},"selection_glyph":null,"view":{"id":"2666"}},"id":"2665","type":"GlyphRenderer"},{"attributes":{"axis":{"id":"2496"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"2499","type":"Grid"},{"attributes":{"below":[{"id":"2492"}],"center":[{"id":"2495"},{"id":"2499"}],"left":[{"id":"2496"}],"margin":[5,5,5,5],"min_border_bottom":0,"min_border_left":0,"min_border_right":0,"min_border_top":0,"min_width":80,"plot_height":150,"plot_width":null,"renderers":[{"id":"2511"},{"id":"2519"},{"id":"2526"}],"sizing_mode":"stretch_width","title":{"id":"2484"},"toolbar":{"id":"2500"},"toolbar_location":null,"x_range":{"id":"2481"},"x_scale":{"id":"2488"},"y_range":{"id":"2482"},"y_scale":{"id":"2490"}},"id":"2483","subtype":"Figure","type":"Plot"},{"attributes":{"axis":{"id":"2492"},"grid_line_color":null,"ticker":null},"id":"2495","type":"Grid"},{"attributes":{"source":{"id":"2659"}},"id":"2666","type":"CDSView"},{"attributes":{"high":1100,"low":900,"palette":["#2b83ba","#abdda4","#ffffbf","#fdae61","#d7191c"]},"id":"2473","type":"LinearColorMapper"},{"attributes":{},"id":"2493","type":"BasicTicker"},{"attributes":{"data_source":{"id":"2667"},"glyph":{"id":"2670"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"2671"},"selection_glyph":null,"view":{"id":"2673"}},"id":"2672","type":"GlyphRenderer"},{"attributes":{},"id":"2497","type":"BasicTicker"},{"attributes":{"axis_label":"y","bounds":"auto","formatter":{"id":"2503"},"major_label_orientation":"horizontal","ticker":{"id":"2497"},"visible":false},"id":"2496","type":"LinearAxis"},{"attributes":{"source":{"id":"2667"}},"id":"2673","type":"CDSView"},{"attributes":{"end":40,"reset_end":40,"reset_start":-20,"start":-20,"tags":[[["y","y",null]]]},"id":"2482","type":"Range1d"},{"attributes":{},"id":"2668","type":"Selection"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"2500","type":"Toolbar"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer06029","sizing_mode":"stretch_width"},"id":"2921","type":"Spacer"},{"attributes":{"data":{"x":[0],"y0":{"__ndarray__":"AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[1]},"y1":{"__ndarray__":"MzMzMzNTR0A=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"2652"},"selection_policy":{"id":"2679"}},"id":"2651","type":"ColumnDataSource"},{"attributes":{"text_align":"center","text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"2670","type":"Text"},{"attributes":{"data":{"text":["46.65%"],"x":[0],"y":[46.65]},"selected":{"id":"2668"},"selection_policy":{"id":"2683"}},"id":"2667","type":"ColumnDataSource"},{"attributes":{"end":1.1,"reset_end":1.1,"reset_start":-1.1,"start":-1.1,"tags":[[["x","x",null]]]},"id":"2627","type":"Range1d"},{"attributes":{"end":1.1,"reset_end":1.1,"reset_start":-1.1,"start":-1.1,"tags":[[["x","x",null]]]},"id":"2481","type":"Range1d"},{"attributes":{"text_align":"center","text_alpha":{"value":0.1},"text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"2671","type":"Text"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"y","transform":{"id":"2471"}},"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"2471"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2517","type":"Scatter"},{"attributes":{},"id":"2679","type":"UnionRenderers"},{"attributes":{"high":40,"low":0,"palette":["#0C0786","#7C02A7","#CA4678","#F79341","#EFF821"]},"id":"2471","type":"LinearColorMapper"},{"attributes":{"end":100,"reset_end":100,"reset_start":0,"tags":[[["y","y",null]]]},"id":"2628","type":"Range1d"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown06009","text":"&lt;h2&gt;room&lt;/h2&gt;"},"id":"2478","type":"panel.models.markup.HTML"},{"attributes":{"data":{"x":[0],"y":{"__ndarray__":"hetRuB5FNEA=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"2514"},"selection_policy":{"id":"2535"}},"id":"2513","type":"ColumnDataSource"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer06011","sizing_mode":"stretch_width"},"id":"2479","type":"Spacer"},{"attributes":{"fill_color":{"field":"y","transform":{"id":"2471"}},"line_color":{"field":"y","transform":{"id":"2471"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2516","type":"Scatter"},{"attributes":{"source":{"id":"2505"}},"id":"2512","type":"CDSView"},{"attributes":{"data_source":{"id":"2505"},"glyph":{"id":"2508"},"hover_glyph":null,"muted_glyph":{"id":"2510"},"nonselection_glyph":{"id":"2509"},"selection_glyph":null,"view":{"id":"2512"}},"id":"2511","type":"GlyphRenderer"},{"attributes":{},"id":"2793","type":"BasicTickFormatter"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"2471"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2510","type":"Segment"},{"attributes":{"text_align":"center","text_alpha":{"value":0.1},"text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"2525","type":"Text"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"2471"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2509","type":"Segment"},{"attributes":{},"id":"2647","type":"BasicTickFormatter"},{"attributes":{},"id":"2514","type":"Selection"},{"attributes":{"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"2473"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2801","type":"Segment"},{"attributes":{},"id":"2636","type":"LinearScale"},{"attributes":{"line_color":{"field":"y","transform":{"id":"2473"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2800","type":"Segment"},{"attributes":{"data_source":{"id":"2513"},"glyph":{"id":"2516"},"hover_glyph":null,"muted_glyph":{"id":"2518"},"nonselection_glyph":{"id":"2517"},"selection_glyph":null,"view":{"id":"2520"}},"id":"2519","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"y","transform":{"id":"2473"}},"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"2473"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2810","type":"Scatter"},{"attributes":{"fill_color":{"field":"y","transform":{"id":"2473"}},"line_color":{"field":"y","transform":{"id":"2473"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2808","type":"Scatter"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"2630","type":"Title"},{"attributes":{"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"2473"}},"line_width":{"value":3},"x0":{"field":"x"},"x1":{"field":"x"},"y0":{"field":"y0"},"y1":{"field":"y1"}},"id":"2802","type":"Segment"},{"attributes":{"css_classes":["markdown"],"margin":[5,5,5,5],"name":"Markdown06031","text":"&lt;p&gt;Lu 1 fois&lt;/p&gt;"},"id":"2923","type":"panel.models.markup.HTML"},{"attributes":{"source":{"id":"2513"}},"id":"2520","type":"CDSView"},{"attributes":{"fill_alpha":{"value":0.2},"fill_color":{"field":"y","transform":{"id":"2471"}},"line_alpha":{"value":0.2},"line_color":{"field":"y","transform":{"id":"2471"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2518","type":"Scatter"},{"attributes":{"source":{"id":"2797"}},"id":"2804","type":"CDSView"},{"attributes":{"data_source":{"id":"2797"},"glyph":{"id":"2800"},"hover_glyph":null,"muted_glyph":{"id":"2802"},"nonselection_glyph":{"id":"2801"},"selection_glyph":null,"view":{"id":"2804"}},"id":"2803","type":"GlyphRenderer"},{"attributes":{},"id":"2639","type":"BasicTicker"},{"attributes":{},"id":"2806","type":"Selection"},{"attributes":{"children":[{"id":"2475"}],"margin":[0,0,0,0],"name":"Row05579"},"id":"2474","type":"Row"},{"attributes":{"text":"","text_color":{"value":"black"},"text_font_size":{"value":"12pt"}},"id":"2776","type":"Title"},{"attributes":{},"id":"2533","type":"UnionRenderers"},{"attributes":{},"id":"2649","type":"BasicTickFormatter"},{"attributes":{"children":[{"id":"2920"},{"id":"2921"},{"id":"2922"}],"margin":[0,0,0,0],"name":"Row06030"},"id":"2919","type":"Row"},{"attributes":{},"id":"2798","type":"Selection"},{"attributes":{},"id":"2652","type":"Selection"},{"attributes":{"axis":{"id":"2642"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"2645","type":"Grid"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"field":"y","transform":{"id":"2473"}},"line_alpha":{"value":0.1},"line_color":{"field":"y","transform":{"id":"2473"}},"size":{"units":"screen","value":80},"x":{"field":"x"},"y":{"field":"y"}},"id":"2809","type":"Scatter"},{"attributes":{"align":"end","bar_color":"warning","height":20,"margin":[5,10,5,10],"max":255,"sizing_mode":"fixed","value":81,"width":50},"id":"2922","type":"panel.models.widgets.Progress"},{"attributes":{},"id":"2782","type":"LinearScale"},{"attributes":{},"id":"2795","type":"BasicTickFormatter"},{"attributes":{},"id":"2522","type":"Selection"},{"attributes":{"below":[{"id":"2638"}],"center":[{"id":"2641"},{"id":"2645"}],"left":[{"id":"2642"}],"margin":[5,5,5,5],"min_border_bottom":0,"min_border_left":0,"min_border_right":0,"min_border_top":0,"min_width":80,"plot_height":150,"plot_width":null,"renderers":[{"id":"2657"},{"id":"2665"},{"id":"2672"}],"sizing_mode":"stretch_width","title":{"id":"2630"},"toolbar":{"id":"2646"},"toolbar_location":null,"x_range":{"id":"2627"},"x_scale":{"id":"2634"},"y_range":{"id":"2628"},"y_scale":{"id":"2636"}},"id":"2629","subtype":"Figure","type":"Plot"},{"attributes":{"data_source":{"id":"2521"},"glyph":{"id":"2524"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"2525"},"selection_glyph":null,"view":{"id":"2527"}},"id":"2526","type":"GlyphRenderer"},{"attributes":{"axis_label":"x","bounds":"auto","formatter":{"id":"2647"},"major_label_orientation":"horizontal","ticker":{"id":"2639"},"visible":false},"id":"2638","type":"LinearAxis"},{"attributes":{"data_source":{"id":"2805"},"glyph":{"id":"2808"},"hover_glyph":null,"muted_glyph":{"id":"2810"},"nonselection_glyph":{"id":"2809"},"selection_glyph":null,"view":{"id":"2812"}},"id":"2811","type":"GlyphRenderer"},{"attributes":{"below":[{"id":"2784"}],"center":[{"id":"2787"},{"id":"2791"}],"left":[{"id":"2788"}],"margin":[5,5,5,5],"min_border_bottom":0,"min_border_left":0,"min_border_right":0,"min_border_top":0,"min_width":80,"plot_height":150,"plot_width":null,"renderers":[{"id":"2803"},{"id":"2811"},{"id":"2818"}],"sizing_mode":"stretch_width","title":{"id":"2776"},"toolbar":{"id":"2792"},"toolbar_location":null,"x_range":{"id":"2773"},"x_scale":{"id":"2780"},"y_range":{"id":"2774"},"y_scale":{"id":"2782"}},"id":"2775","subtype":"Figure","type":"Plot"},{"attributes":{"text_align":"center","text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"2524","type":"Text"},{"attributes":{"data":{"text":["20.27\u00b0C"],"x":[0],"y":[20.27]},"selected":{"id":"2522"},"selection_policy":{"id":"2537"}},"id":"2521","type":"ColumnDataSource"},{"attributes":{},"id":"2785","type":"BasicTicker"},{"attributes":{"axis":{"id":"2788"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"2791","type":"Grid"},{"attributes":{"source":{"id":"2805"}},"id":"2812","type":"CDSView"},{"attributes":{"data":{"x":[0],"y":{"__ndarray__":"MzMzMzNTR0A=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"2660"},"selection_policy":{"id":"2681"}},"id":"2659","type":"ColumnDataSource"},{"attributes":{},"id":"2634","type":"LinearScale"},{"attributes":{"source":{"id":"2521"}},"id":"2527","type":"CDSView"},{"attributes":{"data":{"x":[0],"y":{"__ndarray__":"AAAAAAAUj0A=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"2806"},"selection_policy":{"id":"2827"}},"id":"2805","type":"ColumnDataSource"},{"attributes":{},"id":"2535","type":"UnionRenderers"},{"attributes":{"axis":{"id":"2638"},"grid_line_color":null,"ticker":null},"id":"2641","type":"Grid"},{"attributes":{"axis_label":"x","bounds":"auto","formatter":{"id":"2793"},"major_label_orientation":"horizontal","ticker":{"id":"2785"},"visible":false},"id":"2784","type":"LinearAxis"},{"attributes":{"data_source":{"id":"2813"},"glyph":{"id":"2816"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"2817"},"selection_glyph":null,"view":{"id":"2819"}},"id":"2818","type":"GlyphRenderer"},{"attributes":{},"id":"2537","type":"UnionRenderers"},{"attributes":{},"id":"2643","type":"BasicTicker"},{"attributes":{"margin":[5,5,5,5],"name":"HSpacer06008","sizing_mode":"stretch_width"},"id":"2477","type":"Spacer"},{"attributes":{"axis_label":"y","bounds":"auto","formatter":{"id":"2649"},"major_label_orientation":"horizontal","ticker":{"id":"2643"},"visible":false},"id":"2642","type":"LinearAxis"},{"attributes":{"data":{"x":[0],"y0":{"__ndarray__":"AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[1]},"y1":{"__ndarray__":"hetRuB5FNEA=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"2506"},"selection_policy":{"id":"2533"}},"id":"2505","type":"ColumnDataSource"},{"attributes":{"source":{"id":"2813"}},"id":"2819","type":"CDSView"},{"attributes":{"children":[{"id":"2477"},{"id":"2478"},{"id":"2479"}],"margin":[0,0,0,0],"name":"Row06012"},"id":"2476","type":"Row"},{"attributes":{},"id":"2488","type":"LinearScale"},{"attributes":{},"id":"2683","type":"UnionRenderers"},{"attributes":{},"id":"2780","type":"LinearScale"},{"attributes":{},"id":"2814","type":"Selection"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"2646","type":"Toolbar"},{"attributes":{"end":1200,"reset_end":1200,"reset_start":800,"start":800,"tags":[[["y","y",null]]]},"id":"2774","type":"Range1d"},{"attributes":{"axis":{"id":"2784"},"grid_line_color":null,"ticker":null},"id":"2787","type":"Grid"},{"attributes":{"client_comm_id":"e7e729f8bad5499084dd9b5196bf36f1","comm_id":"ef833f16790243038fd6ef63ef8a9fa1","plot_id":"2474"},"id":"3023","type":"panel.models.comm_manager.CommManager"},{"attributes":{"children":[{"id":"2476"},{"id":"2480"},{"id":"2919"},{"id":"2923"}],"margin":[0,0,0,0],"name":"Column06033"},"id":"2475","type":"Column"},{"attributes":{},"id":"2789","type":"BasicTicker"},{"attributes":{"text_align":"center","text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"2816","type":"Text"},{"attributes":{"axis_label":"y","bounds":"auto","formatter":{"id":"2795"},"major_label_orientation":"horizontal","ticker":{"id":"2789"},"visible":false},"id":"2788","type":"LinearAxis"},{"attributes":{"data":{"text":["994.5\nhPa"],"x":[0],"y":[994.5]},"selected":{"id":"2814"},"selection_policy":{"id":"2829"}},"id":"2813","type":"ColumnDataSource"},{"attributes":{},"id":"2681","type":"UnionRenderers"},{"attributes":{"data":{"x":[0],"y0":{"__ndarray__":"AAAAAAAAAAA=","dtype":"float64","order":"little","shape":[1]},"y1":{"__ndarray__":"AAAAAAAUj0A=","dtype":"float64","order":"little","shape":[1]}},"selected":{"id":"2798"},"selection_policy":{"id":"2825"}},"id":"2797","type":"ColumnDataSource"},{"attributes":{},"id":"2827","type":"UnionRenderers"},{"attributes":{"end":1.1,"reset_end":1.1,"reset_start":-1.1,"start":-1.1,"tags":[[["x","x",null]]]},"id":"2773","type":"Range1d"},{"attributes":{"text_align":"center","text_alpha":{"value":0.1},"text_baseline":"middle","text_color":{"value":"black"},"text_font_size":{"value":"12Pt"},"x":{"field":"x"},"y":{"field":"y"}},"id":"2817","type":"Text"},{"attributes":{},"id":"2829","type":"UnionRenderers"},{"attributes":{},"id":"2825","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"2792","type":"Toolbar"}],"root_ids":["2474","3023"]},"title":"Bokeh Application","version":"2.2.3"}};
+    var render_items = [{"docid":"93d79a6e-4dcc-42bc-8be1-46a0e81ad1b1","root_ids":["2474"],"roots":{"2474":"b441aecc-0821-4c61-8478-e365b66a502e"}}];
     root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
   }
   if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
@@ -16878,20 +16477,6 @@ Vous noterez que les paramètres du décorateur sont exactement les mêmes que l
 Il y a certainement des points à améliorer quant à la présentation graphique...</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
