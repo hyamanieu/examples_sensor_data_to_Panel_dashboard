@@ -1,0 +1,13 @@
+name: home_on_bokeh
+channels:
+  - conda-forge
+  - anaconda-fusion
+  - defaults
+dependencies:
+  - paho-mqtt
+  - panel=0.10.2
+  - python=3.7
+  - holoviews
+  - sqlalchemy
+  - hvplot
+  - psycopg2
