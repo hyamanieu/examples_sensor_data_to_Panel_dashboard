@@ -1,0 +1,192 @@
+[
+    {
+        "id": "150ff0cd.ac1c9f",
+        "type": "tab",
+        "label": "MQTT to SQL Example",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "502ce981.c3c718",
+        "type": "debug",
+        "z": "150ff0cd.ac1c9f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1870,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6028372b.6d199",
+        "type": "change",
+        "z": "150ff0cd.ac1c9f",
+        "name": "set name to roomname",
+        "rules": [
+            {
+                "t": "set",
+                "p": "name",
+                "pt": "msg",
+                "to": "room",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 200,
+        "wires": [
+            [
+                "a73a032f.b631b"
+            ]
+        ]
+    },
+    {
+        "id": "a73a032f.b631b",
+        "type": "switch",
+        "z": "150ff0cd.ac1c9f",
+        "name": "",
+        "property": "payload.linkquality",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "null"
+            },
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1050,
+        "y": 200,
+        "wires": [
+            [
+                "e37391f1.76d83"
+            ],
+            [
+                "5e46f449.29575c"
+            ]
+        ]
+    },
+    {
+        "id": "e37391f1.76d83",
+        "type": "change",
+        "z": "150ff0cd.ac1c9f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.linkquality",
+                "pt": "msg",
+                "to": "NULL",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1240,
+        "y": 160,
+        "wires": [
+            [
+                "5e46f449.29575c"
+            ]
+        ]
+    },
+    {
+        "id": "5e46f449.29575c",
+        "type": "change",
+        "z": "150ff0cd.ac1c9f",
+        "name": "Query parameters",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "data.sensors",
+                "pt": "msg",
+                "to": "{\"name\":msg.name,\t   \"battery\": msg.payload.battery,\t   \"humidity\":msg.payload.humidity,\t   \"pressure\":msg.payload.pressure,\t   \"temperature\":msg.payload.temperature,\t   \"voltage\":msg.payload.voltage,\t   \"linkquality\":msg.payload.linkquality,\t   \"msg_ts\":$now()\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1470,
+        "y": 220,
+        "wires": [
+            [
+                "687d29ae.4ff0f"
+            ]
+        ]
+    },
+    {
+        "id": "687d29ae.4ff0f",
+        "type": "template",
+        "z": "150ff0cd.ac1c9f",
+        "name": "INSERT TH DATA",
+        "field": "query",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\nCREATE TABLE IF NOT EXISTS th.{{{data.sensors.name}}}(\n  ID         SERIAL    PRIMARY KEY    NOT NULL,\n  battery    INT,\n  humidity   REAL                     NOT NULL,\n  pressure   INT,\n  temperature REAL                    NOT NULL,\n  voltage    INT,\n  linkquality INT,\n  msg_ts     TIMESTAMP                NOT NULL\n );\n\n\nINSERT INTO th.{{{data.sensors.name}}}(battery,\n                                 humidity,\n                                 pressure,\n                                 temperature,\n                                 voltage,\n                                 linkquality,\n                                 msg_ts)\nVALUES ({{{data.sensors.battery}}}, \n        {{{data.sensors.humidity}}},\n        {{{data.sensors.pressure}}},\n        {{{data.sensors.temperature}}},\n        {{{data.sensors.voltage}}},\n        {{{data.sensors.linkquality}}},\n        '{{{data.sensors.msg_ts}}}');\n\nCOMMIT;",
+        "output": "str",
+        "x": 1670,
+        "y": 200,
+        "wires": [
+            [
+                "502ce981.c3c718",
+                "5fbb8de4.19e0e4"
+            ]
+        ]
+    },
+    {
+        "id": "3c8b18ee.62d62",
+        "type": "mqtt in",
+        "z": "150ff0cd.ac1c9f",
+        "name": "",
+        "topic": "",
+        "qos": "2",
+        "datatype": "auto",
+        "x": 640,
+        "y": 220,
+        "wires": [
+            [
+                "6028372b.6d199"
+            ]
+        ]
+    },
+    {
+        "id": "5fbb8de4.19e0e4",
+        "type": "digitaloak-postgresql-query",
+        "z": "150ff0cd.ac1c9f",
+        "name": "",
+        "inputs": 1,
+        "outputs": 1,
+        "x": 1870,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    }
+]
