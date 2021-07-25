@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[20]:
+# In[ ]:
 
 
 #imports for mqtt
@@ -24,7 +24,7 @@ from numpy import nan
 import datetime
 
 
-# In[21]:
+# In[ ]:
 
 
 
@@ -40,7 +40,7 @@ theme = Theme(
 })
 
 
-# In[22]:
+# In[ ]:
 
 
 css = '''
@@ -55,7 +55,7 @@ pn.extension(raw_css=[css])
 hv.extension('bokeh')
 
 
-# In[23]:
+# In[ ]:
 
 
 MQTT_USER = os.getenv('MQTT_USER')
@@ -63,13 +63,13 @@ MQTT_PASSWORD= os.getenv('MQTT_PASSWORD')
 MQTT_ADDRESS= os.getenv('MQTT_ADDRESS')
 
 
-# In[24]:
+# In[ ]:
 
 
 hv.renderer('bokeh').theme = theme
 
 
-# In[25]:
+# In[ ]:
 
 
 topics = {"zigbee2mqtt/TH_bureau":"bureau",
@@ -83,7 +83,7 @@ topics = {"zigbee2mqtt/TH_bureau":"bureau",
 }
 
 
-# In[26]:
+# In[ ]:
 
 
 shiny_names = {
@@ -98,7 +98,7 @@ shiny_names = {
     }
 
 
-# In[27]:
+# In[ ]:
 
 
 def fetch_first_message(topic):
@@ -114,14 +114,14 @@ def fetch_first_message(topic):
     return payload
 
 
-# In[28]:
+# In[ ]:
 
 
 sensor_streams = {room: hv.streams.Stream.define(room,
                                     **fetch_first_message(channel))() for channel, room in topics.items()}
 
 
-# In[29]:
+# In[ ]:
 
 
 def room_plots(humidity,temperature,pressure,voltage,battery,linkquality=None,room_name='room'):
@@ -129,22 +129,21 @@ def room_plots(humidity,temperature,pressure,voltage,battery,linkquality=None,ro
     
     def value_plot(value,unit='°C',palette=palettes.Plasma5,ylim=(-20,40),low=0,high=40,):
     
-        scat = hv.Scatter({0:value})
-        spik = hv.Spikes(scat)
-        hv.Bars(scat)
+        scat = hv.Scatter({0:value},kdims='x',vdims='y')
+        spik = hv.Spikes(scat,kdims='x',vdims='y')
         lab = hv.Text(x=0,y=value,text=f"{value}{unit}")
 
         mapper = linear_cmap(field_name='y',palette=palette,low=low,high=high)
 
         opts=dict(ylim=ylim,
-                  color=mapper,responsive=True,
+                  responsive=True,
                   xaxis=None,yaxis=None,
                   toolbar='disable',
                   min_width=80,
                   height=150,
                   border=0)
         layout = (spik*scat*lab).opts(
-                                        hv.opts.Scatter(size=80,**opts),
+                                        hv.opts.Scatter(size=80,color=mapper,**opts),
                                         hv.opts.Spikes(line_width=3,**opts),
                                         hv.opts.Text(color='black'),
 
@@ -185,7 +184,7 @@ def room_plots(humidity,temperature,pressure,voltage,battery,linkquality=None,ro
     return layout
 
 
-# In[30]:
+# In[ ]:
 
 
 #define functions, each of which depends on each stream. 
@@ -206,58 +205,42 @@ for k,room in sensor_streams.items():
     plot_funcs[k]=rename_func(k)
 
 
-# In[31]:
+# In[ ]:
 
 
 Info = pn.pane.Markdown('## Dernière info:')
-
-gspec = pn.GridSpec(sizing_mode='stretch_both', max_height=1200)
-
-#top floor
-gspec[0,0]=plot_funcs['paul']
-gspec[0,1]=plot_funcs['bureau']
-gspec[0,2]=Info
-#top_floor = pn.Row(plot_funcs['paul'],
-#                   plot_funcs['bureau'],
-#                   Info)
-#bot_floor_east
-gspec[1,0]=plot_funcs['chambre']
-gspec[1,1]=plot_funcs['salon']
-gspec[1,2]=plot_funcs['entree']
-#bot_floor_east = pn.Row(plot_funcs['chambre'],
-#                        plot_funcs['salon'],
-#                        plot_funcs['entree'])
-#bot_floor_west
-gspec[2,0]=plot_funcs['cuisine']
-gspec[2,1]=plot_funcs['sdb']
-gspec[2,2]=plot_funcs['cage_desc']
-#bot_floor_west = pn.Row(plot_funcs['cuisine'],
-#                        plot_funcs['sdb'],
-#                        plot_funcs['cage_desc'])
-
-#flat = pn.Column(top_floor, bot_floor_east, bot_floor_west,height=800,width=1000)
-flat = gspec
+flex = pn.FlexBox(*[plot_funcs['paul'],
+                  plot_funcs['bureau'],
+                  Info,
+                  plot_funcs['chambre'],
+                  plot_funcs['salon'],
+                  plot_funcs['entree'],
+                  plot_funcs['cuisine'],
+                  plot_funcs['sdb'],
+                  plot_funcs['cage_desc']
+                  
+                  ])
 
 
-# In[32]:
+# In[ ]:
 
 
 myclient = client.Client(client_id=socket.gethostname(),)
 
 
-# In[33]:
+# In[ ]:
 
 
 myclient.username_pw_set(MQTT_USER,password=MQTT_PASSWORD)
 
 
-# In[34]:
+# In[ ]:
 
 
 myclient.connect(MQTT_ADDRESS)
 
 
-# In[35]:
+# In[ ]:
 
 
 def on_message(client, userdata, message):
@@ -268,7 +251,7 @@ def on_message(client, userdata, message):
     sensor_streams[room].event(**payload)
 
 
-# In[36]:
+# In[ ]:
 
 
 myclient.loop_start()
@@ -276,8 +259,14 @@ myclient.subscribe(list((chan,0) for chan in topics.keys()))
 myclient.on_message = on_message
 
 
-# In[37]:
+# In[ ]:
 
 
-flat.servable()
+flex.servable()
+
+
+# In[ ]:
+
+
+
 

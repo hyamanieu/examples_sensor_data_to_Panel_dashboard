@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import panel as pn
@@ -13,7 +13,7 @@ import param
 from bokeh.models.formatters import DatetimeTickFormatter
 
 
-# In[2]:
+# In[ ]:
 
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -22,13 +22,13 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 
-# In[3]:
+# In[ ]:
 
 
 import datetime as dt
 
 
-# In[4]:
+# In[ ]:
 
 
 XFORMATTER = DatetimeTickFormatter()
@@ -37,13 +37,13 @@ XFORMATTER.months = ['%Y-%m-%d']
 XFORMATTER.days = ['%d/%m']
 
 
-# In[5]:
+# In[ ]:
 
 
 pn.extension()
 
 
-# In[7]:
+# In[ ]:
 
 
 POSTGRES_USER = os.getenv('POSTGRES_USER')
@@ -51,7 +51,7 @@ POSTGRES_PASSWORD= os.getenv('POSTGRES_PASSWORD')
 POSTGRES_ADDRESS= os.getenv('POSTGRES_ADDRESS')
 
 
-# In[8]:
+# In[ ]:
 
 
 engine = create_engine('postgresql://{0}:{1}@{2}/sensors'.format(POSTGRES_USER,
@@ -59,7 +59,7 @@ engine = create_engine('postgresql://{0}:{1}@{2}/sensors'.format(POSTGRES_USER,
                                                                               POSTGRES_ADDRESS))
 
 
-# In[9]:
+# In[ ]:
 
 
 Session = sessionmaker(bind=engine)
@@ -74,13 +74,13 @@ Base.metadata.reflect(engine,schema='th')
 
 
 
-# In[10]:
+# In[ ]:
 
 
 Base.metadata.tables.keys()
 
 
-# In[11]:
+# In[ ]:
 
 
 tablename = 'th.bureau'
@@ -89,18 +89,22 @@ dates = (table.c.msg_ts <= dt.date.today()) & (table.c.msg_ts >= dt.date.today()
 query = session.query(table).filter(dates)
 
 
-# In[12]:
+# In[ ]:
 
 
 session.rollback()
 
 
-# In[13]:
+# In[ ]:
 
 
 class Historic_Data_Panel(param.Parameterized):
-    upper_date = param.Date(default=dt.date.today(),bounds=(None,dt.date.today()))
+    
+    source = param.Selector(default='check_one_room', objects=['check_one_room','compare_rooms'])
     lower_date = param.Date(default=dt.date.today()-dt.timedelta(days=3),bounds=(None,dt.date.today()))
+    upper_date = param.Date(default=dt.date.today(),bounds=(None,dt.date.today()))
+    
+    plot_kind = param.Selector(default='line',objects=['line','scatter'])
     t_list = list(Base.metadata.tables.keys())
     table_selector = param.ListSelector(default=t_list[:1], objects=t_list)
     y_selec = param.Selector(default='temperature',objects=['temperature','humidity','pressure',
@@ -110,8 +114,6 @@ class Historic_Data_Panel(param.Parameterized):
     y_selec2 = param.ListSelector(default=['temperature','humidity','pressure'],
                                  objects=['temperature','humidity','pressure',
                                                             'linkquality','battery','voltage'])
-    
-    
     
     @param.depends('upper_date','lower_date',watch=True)
     def load_dataframes(self):
@@ -125,13 +127,13 @@ class Historic_Data_Panel(param.Parameterized):
             
             
             
-    @param.depends('table_selector','y_selec','upper_date','lower_date')
+    @param.depends('table_selector','y_selec','upper_date','lower_date','plot_kind')
     def show_plot(self):
         l=[]
         grid_style = {"grid_line_color":"olive",
-                     "minor_grid_line_color":None}
+                      "minor_grid_line_color":None}
         for tn in self.table_selector:
-            p = self.dfs[tn].hvplot.line(x='msg_ts',y=self.y_selec,rot=20,xformatter=XFORMATTER,
+            p = self.dfs[tn].hvplot(kind=self.plot_kind,x='msg_ts',y=self.y_selec,rot=20,xformatter=XFORMATTER,
                                         label=tn,responsive=True).opts(show_grid=True)
             l.append(p)
             
@@ -140,7 +142,7 @@ class Historic_Data_Panel(param.Parameterized):
         
         return pn.pane.HoloViews(o,sizing_mode="stretch_both",min_width=600,min_height=800)
     
-    @param.depends('table_selector2','y_selec2','upper_date','lower_date')
+    @param.depends('table_selector2','y_selec2','upper_date','lower_date','plot_kind')
     def show_plot2(self):
         tn = self.table_selector2
         l=[]
@@ -149,7 +151,7 @@ class Historic_Data_Panel(param.Parameterized):
         def_opt = dict(gridstyle=grid_style,
                    show_grid=True)
         for i, y in enumerate(self.y_selec2):
-            p = self.dfs[tn].hvplot.line(x='msg_ts',y=y,rot=20,xformatter=XFORMATTER,responsive=True,
+            p = self.dfs[tn].hvplot(kind=self.plot_kind,x='msg_ts',y=y,rot=20,xformatter=XFORMATTER,responsive=True,
                                         min_height=150,min_width=300)
             if i==0:
                 p.opts(xaxis='top',**def_opt)
@@ -158,6 +160,26 @@ class Historic_Data_Panel(param.Parameterized):
             l.append(p)
         o = hv.Layout(l).cols(1)
         return pn.pane.HoloViews(o,sizing_mode="stretch_both",min_width=600,min_height=800)
+    
+    @param.depends('source')
+    def body(self):
+        if self.source != "check_one_room":
+            return self.show_plot
+        else:
+            return self.show_plot2
+    @param.depends('source')   
+    def widgets(self):
+        if self.source != "check_one_room":
+            return pn.Param(self.param,name=self.source.replace('_',' '),
+                     parameters=['table_selector','y_selec'],
+                     height_policy='fit',
+                     width_policy='fit')
+        else:             
+            return pn.Param(self.param,name=self.source.replace('_',' '),
+                     parameters=['table_selector2','y_selec2'],
+                     height_policy='fit',
+                     width_policy='fit')
+        
     
     def __init__(self,**params):
         super().__init__(**params)
@@ -168,52 +190,40 @@ class Historic_Data_Panel(param.Parameterized):
 
 
 
-
-# In[14]:
+# In[ ]:
 
 
 mypanel = Historic_Data_Panel()
 
 
-# In[15]:
+# In[ ]:
 
 
-app = pn.Column(
-    pn.Param(mypanel.param,widgets={'upper_date':pn.widgets.DatePicker,
-                                          'lower_date':pn.widgets.DatePicker},
-                          parameters=['upper_date','lower_date'],
-                         default_layout=pn.Row,
-                         height_policy='fit',
-                         width_policy='fit'),
-    pn.Tabs(('Compare rooms',
-        pn.Row(
-            pn.Param(mypanel.param,
-                          parameters=['table_selector','y_selec'],
-                         height_policy='fit',
-                         width_policy='fit'),
-            mypanel.show_plot,
-            sizing_mode='stretch_both'
-        )),
-            ('Check one room',
-        pn.Row(
-            pn.Param(mypanel.param,
-                              parameters=['table_selector2','y_selec2'],
-                             height_policy='fit',
-                             width_policy='fit'),
-                mypanel.show_plot2,
-        sizing_mode='stretch_both')
-        )
-    ),
-sizing_mode='stretch_both'
+bootstrap = pn.template.BootstrapTemplate(title='Bootstrap Template')
+
+
+bootstrap.sidebar.extend([
+    pn.Param(mypanel.param,
+             widgets={'source': pn.widgets.Select,
+                      'lower_date':pn.widgets.DatePicker,
+                      'upper_date':pn.widgets.DatePicker},
+             parameters=['source','lower_date','upper_date','plot_kind'],
+             height_policy='fit',
+             width_policy='fit',
+             name='Sensors'),
+    mypanel.widgets       
+        
+    ]
 )
-         #mypanel.load_dataframes
+
+bootstrap.main.append(mypanel.body)
          
 
 
-# In[16]:
+# In[ ]:
 
 
-app.servable()
+bootstrap.servable()
 
 
 # In[ ]:
